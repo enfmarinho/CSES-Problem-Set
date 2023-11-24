@@ -11,6 +11,7 @@
 #include <bitset>
 #include <climits>
 #include <cmath>
+#include <cstdint>
 #include <cstring>
 #include <deque>
 #include <initializer_list>
@@ -58,6 +59,27 @@ typedef vector<vector<bool>> vvb;
 
 int main() {
   GO FAST;
+  int n, m;
+  cin >> n >> m;
+  multiset<int> ticket_price;
+  for (int counter{0}; counter < n; ++counter) {
+    int tmp;
+    cin >> tmp;
+    ticket_price.insert(tmp);
+  }
+  vi maximum_price(m);
+  for (int index{0}; index < m; ++index) {
+    cin >> maximum_price[index];
+  }
 
+  for (int index{0}; index < m; ++index) {
+    auto it = ticket_price.upper_bound(maximum_price[index]);
+    if (it != ticket_price.begin()) {
+      cout << *(--it) << '\n';
+      ticket_price.erase(it);
+    } else {
+      cout << -1 << '\n';
+    }
+  }
   return 0;
 }
