@@ -1,2 +1,6 @@
+# Executables
 executable
 a.out
+# Test case files
+input_*.txt
+output_*.txt
